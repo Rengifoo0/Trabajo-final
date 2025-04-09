@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco Puntos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/categorias.css">
+  
+  <!-- Estilos para efectos hover y nuevo header compacto -->
+  <style>
+    /* Estilo para el nuevo header compacto con posición fixed */
+    .header-compact {
+      padding: 0.5rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed; /* Cambiamos de sticky a fixed para mayor compatibilidad */
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1050; /* Aumentamos el z-index para asegurar que esté por encima de todo */
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+    
+    /* Ajustamos el espacio para el contenido principal para compensar el header fixed */
+    body {
+      padding-top: 70px; /* Ajusta este valor según la altura de tu header */
+    }
+    
+    /* Estilo para cuando el header se hace fixed tras scroll */
+    .header-compact.scrolled {
+      padding: 0.25rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    
+    /* Para el video, aseguramos que no genere problemas de stacking context */
+    .nosotros-video {
+      position: relative;
+      z-index: 1; /* Un z-index menor que el header */
+    }
+    
+    /* Ajustes al video para asegurar que no cause problemas */
+    video {
+      max-width: 100%;
+      display: block;
+      position: relative;
+    }
+    
+    /* Logo y título más compacto */
+    .logo-compact {
+      max-width: 40px;
+      margin-right: 8px;
+    }
+    
+    .title-compact {
+      font-size: 1.25rem;
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+    
+    /* Menú de navegación compacto */
+    .nav-compact .nav-link {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
+    
+    /* Botones de acceso compactos */
+    .access-buttons {
+      display: flex;
+      align-items: center;
+    }
+    
+    .access-buttons .nav-link {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.9rem;
+    }
+    
+    /* Iniciar sesión en color negro */
+    .login-btn {
+      color: #000 !important; /* Negro */
+    }
+    
+    .login-btn:hover {
+      color: #4caf50 !important; /* Verde al pasar el cursor */
+      transition: color 0.3s ease;
+    }
+    
+    .register-btn {
+      border: 1px solid #4caf50;
+      border-radius: 4px;
+      padding: 0.4rem 1rem !important;
+      color: #4caf50;
+      transition: all 0.3s ease;
+    }
+    
+    .register-btn:hover {
+      background-color: #4caf50;
+      color: white !important;
+    }
+    
+    /* Efecto hover para elementos de navegación */
+    .navbar-nav .nav-link:hover {
+      color: #4caf50 !important;
+      transition: color 0.3s ease;
+    }
+
+    /* Para el enlace de registro con borde */
+    a[href="./registrate.html"]:hover {
+      background-color: #4caf50;
+      color: white !important;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header rediseñado más compacto (estilo Khan Academy) -->
+  <header class="header-compact bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo y nombre -->
+        <div class="d-flex align-items-center">
+          <img class="logo-compact" src="./img/eco.jpg" alt="Logo Eco Puntos">
+          <h1 class="title-compact" style="color: #4caf50;">Eco Puntos</h1>
+        </div>
+        
+        <!-- Navegación central -->
+        <nav class="navbar navbar-expand-lg navbar-light py-0">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 7H20" stroke="#00A13A" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M8 17H20" stroke="#00A13A" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-compact mx-auto">
+              <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#nosotros">Quiénes Somos</a></li>
+              <li class="nav-item"><a class="nav-link" href="#categorias">Categorías</a></li>
+              <li class="nav-item"><a class="nav-link" href="#cta">Contáctanos</a></li>
+            </ul>
+          </div>
+        </nav>
+        
+        <!-- Botones de acceso (login/registro) -->
+        <div class="access-buttons">
+          <a class="nav-link login-btn" href="./iniciosesion.html">Iniciar Sesión</a>
+          <a class="nav-link register-btn ms-2" href="./registrate.html">Regístrate</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- El resto del contenido permanece igual -->
+  <!-- Main Content -->
+  <main>
+    <!-- Sección Hero Modificada -->
+    <section id="hero">
+      <img src="" alt="">
+      <div class="hero-content">
+        <h1>TRANSFORMACIÓN | PRESERVACIÓN DEL PLANETA</h1>
+        <p>En Eco Puntos reciclamos sueños y creamos realidades sostenibles.</p>
+        <a href="#contact" class="btn btn-hero">Contáctanos</a>
+      </div>
+    </section>
+
+   <!-- Sección Nosotros (Quiénes Somos) -->
+    <section id="nosotros" class="container my-5">
+      <div class="d-flex align-items-center justify-content-between">
+        <!-- Contenedor de texto -->
+        <div class="nosotros-texto" style="flex: 1; margin-right: 20px;">
+          <h1 class="text-center" style="color:#4caf50;">Quiénes Somos</h1>
+          <p>
+            Misión:
+            <br>
+            En Eco puntos, queremos que reciclar sea más que una obligación: una oportunidad. Creemos que cada esfuerzo por el planeta merece ser recompensado, por eso hemos creado una plataforma donde las personas pueden transformar sus residuos en dinero. Nuestro propósito es hacer del reciclaje un hábito accesible, fácil y motivador, ayudando a construir un futuro más limpio y sostenible para todos.
+          </p>
+          <p>
+            Visión:
+            <br>
+            Soñamos con un mundo donde reciclar sea parte del día a día, no solo por el beneficio económico, sino por el impacto positivo en el medio ambiente. Queremos que Eco puntos sea el puente entre las personas y un futuro más verde, facilitando el acceso a recompensas justas por su compromiso con el planeta. Nuestra meta es crecer, llegar a más comunidades y convertirnos en un referente en reciclaje incentivado.
+          </p>
+        </div>
+        <!-- Contenedor del video -->
+        <div class="nosotros-video" style="flex: 1; text-align: center;">
+          <video controls width="400">
+            <source src="./mp4/codigo de etica.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Main Content -->
+    <section id="categorias" class="container my-5">
+      <h2 class="text-center" style="color: #4caf50;">Explora Categorías de Reciclaje</h2>
+      <p class="text-center">Selecciona una categoría para aprender más sobre cómo reciclar y contribuir al cuidado del medio ambiente.</p>
+
+      <div class="row">
+        <!-- Categoría Plásticos -->
+        <div class="col-md-3 col-sm-6 my-3">
+          <div class="card text-center">
+            <img src="./img/plasticos.jpg" class="card-img-top" alt="Plásticos">
+            <div class="card-body">
+              <h5 class="card-title" style="color: #4caf50;">Plásticos</h5>
+              <details>
+                <summary class="btn btn-primary">Ver Más</summary>
+                <p>El plástico es un material reciclable que puede reutilizarse para fabricar nuevos productos y reducir la contaminación ambiental.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categoría Vidrio -->
+        <div class="col-md-3 col-sm-6 my-3">
+          <div class="card text-center">
+            <img src="./img/vidrio.jpg" class="card-img-top" alt="Vidrio">
+            <div class="card-body">
+              <h5 class="card-title" style="color: #4caf50;">Vidrio</h5>
+              <details>
+                <summary class="btn btn-primary">Ver Más</summary>
+                <p>El vidrio es 100% reciclable y puede reutilizarse infinitamente sin perder calidad.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categoría Papel -->
+        <div class="col-md-3 col-sm-6 my-3">
+          <div class="card text-center">
+            <img src="./img/papel.jpg" class="card-img-top" alt="Papel">
+            <div class="card-body">
+              <h5 class="card-title" style="color: #4caf50;">Papel</h5>
+              <details>
+                <summary class="btn btn-primary">Ver Más</summary>
+                <p>Reciclar papel ayuda a reducir la deforestación y a preservar los recursos naturales.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categoría Metales -->
+        <div class="col-md-3 col-sm-6 my-3">
+          <div class="card text-center">
+            <img src="./img/metales.jpg" class="card-img-top" alt="Metales">
+            <div class="card-body">
+              <h5 class="card-title" style="color: #4caf50;">Metales</h5>
+              <details>
+                <summary class="btn btn-primary">Ver Más</summary>
+                <p>El reciclaje de metales permite reducir la minería y conservar recursos naturales.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Llamado a la Acción -->
+    <section id="cta">
+      <div class="cta-container">
+        <h2>¡Únete a nuestra misión verde!</h2>
+        <p>
+          Cada acción cuenta en la transformación de nuestro planeta. Descubre cómo reciclar de manera consciente y marca la diferencia.
+        </p>
+        <a class="btn cta-btn" href="./registrate.html">Descubre más</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="main-footer">
+    <div class="footer-content container">
+      <div class="row">
+        <div class="footer-left col-md-8">
+          <p>Centro De Industria y Construcción SENA</p>
+          <p>Teléfono: (+57) 324 960 55589 – (608) 000 0000</p>
+        </div>
+        <div class="footer-right col-md-4">
+          <ul class="social-icons">
+            <li><a href="https://www.facebook.com/124172968223072"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/SENA_Tolima/status/1541889419942174726"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.instagram.com/explore/locations/124172968223072/sena-centro-de-industria-y-la-construccion/"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom text-center mt-3">
+      <p>© 2025 Eco Puntos. Todos los derechos reservados.</p>
+      <p>
+        <a href="./pdf/PDFA_A3_00_POL_003_Politica_de_Seguridad_y_privacidad_de_la_Informacion.pdf">Políticas de seguridad y privacidad</a> |
+        <a href="#">Términos de uso</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script para manejar el efecto adicional en el header al hacer scroll -->
+  <script>
+    // Función para ajustar la altura del padding-top del body cuando cambia el tamaño del header
+    function updateBodyPadding() {
+      const headerHeight = document.querySelector('.header-compact').offsetHeight;
+      document.body.style.paddingTop = headerHeight + 'px';
+    }
+
+    // Aplicar al cargar y cuando se hace scroll
+    window.addEventListener('load', updateBodyPadding);
+    window.addEventListener('resize', updateBodyPadding);
+    
+    // Función para añadir clase 'scrolled' al header cuando se hace scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header-compact');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Actualizar el padding cada vez que cambia el tamaño del header
+      updateBodyPadding();
+    });
+  </script>
+
+  <!-- Archivos JavaScript necesarios -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
